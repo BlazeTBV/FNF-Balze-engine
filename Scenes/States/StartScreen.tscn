@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sounds/scroll_menu.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Sounds/cancel_menu.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/confirm_menu.ogg" type="AudioStream" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 639, 361 )
+scale = Vector2( 640, 360 )
+mesh = SubResource( 1 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="MoveStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 1 )
+
+[node name="ConfirmStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 3 )
+
+[node name="CancelStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 2 )

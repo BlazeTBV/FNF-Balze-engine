@@ -11,10 +11,11 @@
 [ext_resource path="res://Scenes/Mobile/MobilePlayControls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Sprites/UI/progressBarBack.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Sprites/UI/progressBarOver.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Other/Fonts/font.tres" type="DynamicFont" id=12]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Bop"
-length = 0.2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Icons:scale")
 tracks/0/interp = 1
@@ -22,10 +23,58 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.196146, 1 ),
 "update": 0,
 "values": [ Vector2( 1.7, 1.7 ), Vector2( 1.4, 1.4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Icons/Enemy:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.196146, 1.07177 ),
+"update": 0,
+"values": [ 23.2, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Icons/Player:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.196146, 1 ),
+"update": 0,
+"values": [ -23.2, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Icons/Player:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.196146, 1 ),
+"update": 0,
+"values": [ Vector2( 45.555, 5 ), Vector2( 45.555, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Icons/Enemy:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.196146, 1 ),
+"update": 0,
+"values": [ Vector2( -38.415, 5 ), Vector2( -38.415, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -66,12 +115,52 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0.714286, 0.714286 ) ]
 }
-
-[sub_resource type="DynamicFont" id=5]
-size = 28
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Icons/Enemy:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Icons/Player:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -23.2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Icons/Player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 45.555, 15 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Icons/Enemy:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -38.415, 5 ) ]
+}
 
 [sub_resource type="DynamicFont" id=7]
 size = 23
@@ -101,6 +190,7 @@ transform = Transform2D( 0.7, 0, 0, 0.7, 0, 0 )
 position = Vector2( 914.286, 514.286 )
 
 [node name="Background" type="ColorRect" parent="HUD/HudElements"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -914.0
@@ -113,10 +203,10 @@ color = Color( 0, 0, 0, 0 )
 [node name="Ratings" type="Node2D" parent="HUD/HudElements"]
 
 [node name="PlayerStrumLine" parent="HUD/HudElements" instance=ExtResource( 8 )]
-position = Vector2( 213.574, -364.286 )
+position = Vector2( 213.574, -310 )
 
 [node name="EnemyStrumLine" parent="HUD/HudElements" instance=ExtResource( 8 )]
-position = Vector2( -700.715, -364.286 )
+position = Vector2( -707.143, -310 )
 
 [node name="HealthBar" type="TextureProgress" parent="HUD/HudElements"]
 anchor_left = 0.359
@@ -134,22 +224,20 @@ texture_progress = ExtResource( 7 )
 fill_mode = 1
 tint_under = Color( 1, 0, 0, 1 )
 tint_progress = Color( 0.0784314, 1, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icons" type="Node2D" parent="HUD/HudElements/HealthBar"]
 position = Vector2( 300, 0 )
 scale = Vector2( 1.4, 1.4 )
 
 [node name="Enemy" type="Sprite" parent="HUD/HudElements/HealthBar/Icons"]
-position = Vector2( -38.4153, 0 )
+position = Vector2( -38.415, 5 )
 scale = Vector2( 0.714286, 0.714286 )
 texture = ExtResource( 5 )
 hframes = 2
 
 [node name="Player" type="Sprite" parent="HUD/HudElements/HealthBar/Icons"]
-position = Vector2( 33.6135, 0 )
+position = Vector2( 45.555, 15 )
+rotation = -0.404916
 scale = Vector2( 0.714286, 0.714286 )
 texture = ExtResource( 4 )
 flip_h = true
@@ -161,43 +249,42 @@ anims/Bop = SubResource( 6 )
 anims/RESET = SubResource( 4 )
 
 [node name="TextBar" type="Label" parent="HUD/HudElements"]
-margin_left = -914.286
+margin_left = -914.0
 margin_top = 446.0
-margin_right = 914.714
-margin_bottom = 494.004
-custom_fonts/font = SubResource( 5 )
+margin_right = 915.0
+margin_bottom = 481.0
+custom_fonts/font = ExtResource( 12 )
 text = "Health: 0%"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TopBar" type="Node2D" parent="HUD/HudElements"]
 position = Vector2( -914.286, -514.286 )
 
 [node name="Progress" type="TextureProgress" parent="HUD/HudElements/TopBar"]
+margin_top = 30.0
 margin_right = 1826.0
-margin_bottom = 29.0
+margin_bottom = 59.0
 step = 0.01
 value = 50.0
 texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 11 )
-tint_under = Color( 1, 1, 1, 0.145098 )
-tint_progress = Color( 1, 1, 1, 0.376471 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0.756863, 0.243137, 1 )
 nine_patch_stretch = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="TopBarLabel" type="Label" parent="HUD/HudElements/TopBar"]
-margin_top = 3.0
-margin_right = 1829.0
-margin_bottom = 29.0
+margin_left = -1.42857
+margin_top = 31.4286
+margin_right = 1827.57
+margin_bottom = 57.4286
 custom_fonts/font = SubResource( 7 )
 text = "No-villians | HARD | 0:00"
 align = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="BotplayLabel" type="Label" parent="HUD/HudElements"]
@@ -208,9 +295,6 @@ margin_bottom = -339.857
 custom_fonts/font = SubResource( 8 )
 text = "BOTPLAY"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Countdown" type="Sprite" parent="HUD/HudElements"]
 visible = false
