@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Other/Fonts/vcr.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/States/PlayState.gd" type="Script" id=2]
@@ -15,7 +15,7 @@
 
 [sub_resource type="Animation" id=6]
 resource_name = "Bop"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Icons:scale")
 tracks/0/interp = 1
@@ -23,7 +23,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.196146, 1 ),
 "update": 0,
 "values": [ Vector2( 1.7, 1.7 ), Vector2( 1.4, 1.4 ) ]
@@ -35,7 +35,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.196146, 1.07177 ),
 "update": 0,
 "values": [ 23.2, 0.0 ]
@@ -47,7 +47,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.196146, 1 ),
 "update": 0,
 "values": [ -23.2, 0.0 ]
@@ -59,7 +59,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.196146, 1 ),
 "update": 0,
 "values": [ Vector2( 45.555, 5 ), Vector2( 45.555, 0 ) ]
@@ -71,7 +71,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.196146, 1 ),
 "update": 0,
 "values": [ Vector2( -38.415, 5 ), Vector2( -38.415, 0 ) ]
@@ -162,6 +162,55 @@ tracks/6/keys = {
 "values": [ Vector2( -38.415, 5 ) ]
 }
 
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -917.072, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 446, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "textBop"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:custom_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 37.5, -0.25, 0, 0, 0, 30, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+
 [sub_resource type="DynamicFont" id=7]
 size = 23
 outline_size = 2
@@ -249,13 +298,17 @@ anims/Bop = SubResource( 6 )
 anims/RESET = SubResource( 4 )
 
 [node name="TextBar" type="Label" parent="HUD/HudElements"]
-margin_left = -914.0
+margin_left = -917.072
 margin_top = 446.0
-margin_right = 915.0
+margin_right = 916.785
 margin_bottom = 481.0
 custom_fonts/font = ExtResource( 12 )
 text = "Health: 0%"
 align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/HudElements/TextBar"]
+anims/RESET = SubResource( 9 )
+anims/textBop = SubResource( 10 )
 
 [node name="TopBar" type="Node2D" parent="HUD/HudElements"]
 position = Vector2( -914.286, -514.286 )

@@ -11,7 +11,7 @@ var options = {
 			"STRUM POSITIONS": [null, "", false, "seperator"],
 		"DOWNSCROLL": ["downScroll", "Makes the notes move downward instead of upward.", false],
 		"MIDDLESCROLL": ["middleScroll", "Moves your strumline to the middle.", false],
-		"ENEMY MIDDLESCROLL": ["middleScrollPreview", "Shows a smaller version of the enemys side on the left.", false],
+#		"ENEMY MIDDLESCROLL": ["middleScrollPreview", "Shows a smaller version of the enemys side on the left.", false],
 	},
 	"APPEARENCE": {
 		"CAMERA MOVEMENT": ["cameraMovement", "Moves the camera depending on what notes been hit.", true],

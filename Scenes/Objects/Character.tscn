@@ -90,6 +90,7 @@ position = Vector2( 0, -152 )
 texture = ExtResource( 1 )
 hframes = 10
 vframes = 5
+frame = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

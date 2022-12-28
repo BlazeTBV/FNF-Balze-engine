@@ -424,6 +424,13 @@ func on_hit(note, timing):
 		
 		hitNotes += timingData[2]
 		totalHitNotes += 1
+		$HUD/HudElements/TextBar/AnimationPlayer.play("textBop")
+	
+	if (must_hit) and $HUD/HudElements/TextBar/AnimationPlayer.is_playing():
+		$HUD/HudElements/TextBar/AnimationPlayer.stop()
+		
+		$HUD/HudElements/TextBar/AnimationPlayer.play("textBop")
+		
 		
 		if (rating != "sick" && rating != "good"):
 			isGFC = false
